@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('SCM Checkout') {
             steps {
-                echo 'Cloning repository...'
+               git branch: 'main', url: 'https://github.com/Prajwalatkare1/Demo-Repo.git'
                 // git url: 'https://github.com/your-repo.git'
             }
         }
