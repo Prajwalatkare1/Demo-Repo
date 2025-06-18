@@ -16,10 +16,13 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Package the Code ') {
             steps {
-                echo 'Running tests...'
-                // sh 'mvn test'
+               withMaven(globalMavenSettingsConfig: '', jdk: '', maven: 'Maven', mavenSettingsConfig: '', traceability: true) {
+    // some block
+}
+                echo 'Packaging the code...'
+                 sh 'mvn package'
             }
         }
 
