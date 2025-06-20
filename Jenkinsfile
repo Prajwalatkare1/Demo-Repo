@@ -22,7 +22,7 @@ pipeline {
     // some block
 }
                 echo 'Packaging the code...'
-                 sh 'mvn package'
+                 sh 'mvn clean package'
             }
         }
 
