@@ -1,35 +1,24 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven' // Make sure 'Maven' is configured under Global Tool Configuration
+    }
+
     stages {
         stage('SCM Checkout') {
             steps {
-               git branch: 'main', url: 'https://github.com/Prajwalatkare1/Demo-Repo.git'
-                // git url: 'https://github.com/your-repo.git'
+                echo 'Hello, we started the SCM-Checkout Process'
+                git url: 'https://github.com/Prajwalatkare1/maven-project.git'
+                echo 'Hello, we ended the SCM-Checkout Process'
             }
         }
 
-        stage('Build') {
+        stage('Test the Code') {
             steps {
-                echo 'Building the code....'
-                // sh 'mvn clean install'
-            }
-        }
-
-        stage('Package the Code ') {
-            steps {
-               withMaven(globalMavenSettingsConfig: '', jdk: '', maven: 'Maven', mavenSettingsConfig: '', traceability: true) {
-    // some block
-}
-                echo 'Packaging the code...'
-                 sh 'mvn clean package'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-                // sh './deploy.sh'
+                echo 'Hello, we started the Code Compile Process'
+                sh 'mvn package'
+                echo 'Hello, we ended the Compile Process'
             }
         }
     }
